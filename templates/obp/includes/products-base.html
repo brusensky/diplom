@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+{% extends "includes/base.html" %}
+{% block title %}
+
+{% endblock %}
+
+{% block style%}
+
+<link rel="stylesheet" href="{{static('styles/products.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+     <div class="">
+          {% if products %}
+          <div class="crumbs-container">
+               <div class="crumbs">
+                    <a class = "aWithoutEffects" href="{{url('obp:main_page')}}">Главная страница</a>
+                    &#8594;
+                    <span class = "aWithoutEffects crumb-active"> {% block crumbs %}{% endblock %} </span>
+               </div>
+               <div class="sorting-container">
+                    <div class="dropdown sort-container">
+                         <button class="btn btn-outline-success dropdown-toggle sort-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              По возростанию цены
+                         </button>
+                         <div class="dropdown-menu" id = "sort-options" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item sort-button sort" id = "sortPopulation">По популярности</a>
+
+                              <a class="dropdown-item sort-button sort" data-sort="price:asc">По возростанию цены</a>
+
+
+                              <a class="dropdown-item sort-button sort" data-sort="price:desc">По убыванию цены</a>
+                              <a class="dropdown-item sort-button sort" data-sort="title:asc">По алфавиту</a>
+                              <a class="dropdown-item sort-button sort" data-sort="date:desc">По новизне</a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="card-content-container">
+               <div class="list-card" id = "list-card">
+                    {% for product in products %}
+                    {% include "product-card.html" %}
+                    {% endfor %}
+               </div>
+          </div>
+          {% else %}
+               {% block ifNotProducts %}{% endblock %}
+          {% endif %}
+     </div>
+
+
+{% endblock %}
+
+{% block script%}
+     <!-- <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script> -->
+     <script src = "{{ static('scripts/jquery.mixitup.js') }}"></script>
+     <script type="text/javascript">
+
+     $(document).ready(function () {
+          $(function(){
+               $("#list-card").mixItUp({
+                    selectors: {
+                        target:'.item-card',
+                        sort:'.sort'
+                    }
+               });
+          });
+
+          $('.sort-button').click(function(){
+               // $("#list-card").mixItUp({
+               //      selectors: {
+               //          target:'.item-card',
+               //          sort:'.sort'
+               //      }
+               // });
+          });
+
+          function clickMe() {
+                // document.querySelector("#image-btn-basket").classList.toggle("block-spin");
+                //$("#image-btn-basket").removeClass("jump");
+                $("#image-btn-basket").addClass("jump");
+                setTimeout(function(){  $("#image-btn-basket").removeClass("jump");},1000)
+               }
+
+          $('.btn-basket').click(function(){
+               if ( $(this).hasClass("addToBasket") ){
+                    $(this).attr("value", "В корзине");
+                    $(this).removeClass("addToBasket");
+                    $(this).addClass("deleteFromBasket");
+                    var product_id = parseInt( $( this ).attr('id'), 10 );
+
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/cart/add/',
+                        data: {id: product_id},
+                        dataType: 'json',
+                        success: function(data) {
+                             $("#count_ellements_in_basket").html('');
+                             $("#count_ellements_in_basket").append(data['count']);
+                            /* $("#image-btn-basket").css({"animation": "bounce 1.5s",
+                             "animation-iteration-count": "infinite"
+                        });*/
+                              //document.querySelector("#image-btn-basket").classList.toggle("block-spin");
+                              //$("#image-btn-basket").addClass("block-spin");
+                              //$("#image-btn-basket").removeClass("block-spin");
+                              clickMe();
+                        }
+                    });
+               }
+
+               else{
+
+                    $(this).attr("value", "В корзину");
+                    $(this).removeClass("deleteFromBasket");
+                    $(this).addClass("addToBasket");
+                    var product_id = parseInt( $( this ).attr('id'), 10 );
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/cart/remove/',
+                        data: {id: product_id},
+                        dataType: 'json',
+                        success: function(data) {
+                             $("#count_ellements_in_basket").html('');
+                             $("#count_ellements_in_basket").append(data['count']);
+                        }
+                    });
+               }
+          });
+
+
+     });
+</script>
+{% endblock %}

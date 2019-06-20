@@ -1,0 +1,45 @@
+@import 'template_styles/main-style-file';
+
+.auth-page{
+     background-color: #ededed;
+     text-align: center;
+
+     .auth-container{
+          padding: 20px;
+          display: inline-block;
+          vertical-align: middle;
+
+          border-radius: @border_radius;
+          border: 1px solid black;
+          background-color: white;
+          h1{
+               margin: 20px;
+          }
+          input{
+               display: inline-block;
+               border-radius: @border_radius;
+               border: 1px solid black;
+               padding: 5px;
+          }
+          .btn-submit{
+               display: inline-block;
+               border: 1px solid @button_color;
+               border-radius: @border_radius;
+               padding: 10px 20px 10px 20px;
+               font-size: 15px;
+               background-color: white;
+               margin: 20px;
+          }
+          .btn-submit:hover{
+               background-color: @button_color;
+               color: white;
+          }
+     }
+}
+
+.auth-page:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}

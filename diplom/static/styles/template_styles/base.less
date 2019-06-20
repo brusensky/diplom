@@ -1,0 +1,211 @@
+
+@theme: black;
+@theme_color: #74c43f;
+@blue: #42aaff;
+
+@SIZE: 75px;
+@border_radius: 15px;
+
+@cream: #74c43f;
+@button_color: #74c43f;
+@hoverColor: #74c43f;
+
+
+a.aWithoutEffects{
+     color: black;
+     text-decoration: none;
+}
+
+a.aWithoutEffects:hover{
+     color: black;
+     text-decoration: none;
+}
+
+
+.crumbs-container{
+     border-bottom: 1px solid lightgray;
+     min-height: @SIZE;
+
+     .crumbs{
+          margin-left: 50px;
+          display: inline-block;
+          vertical-align: middle;
+          line-height: @SIZE;
+     }
+     a:hover{
+          color: @button_color;
+     }
+     .crumb-active{
+          color: @blue;
+     }
+}
+
+
+
+body{
+
+     .main-container{
+          height: 100vh;
+          .header-container{
+               min-height: @SIZE;
+          }
+          .bottom-container{
+               position: relative;
+               display: flex;
+               // .shadow-block{
+               //      position: fixed;
+               //      left: -100%;
+               //      top: 0;
+               //      width: 100%;
+               //      height: 100%;
+               //      background: rgba(0,0,0,0.7);
+               //      opacity: 0;
+               //      transition: opacity 0.5s ease;
+               //      z-index: 10;
+               // }
+
+               .sidebar-container{
+               }
+
+               .content-container{
+                    min-width: @SIZE;
+
+                    flex-grow: 1;
+
+                    .jambotron{
+                          margin: 0;
+                          padding: 0;
+                          flex-grow: 1;
+                          z-index: 1;
+                          background-color: white;
+                          padding-bottom: 30px;
+
+                    }
+                    .footer{
+                         bottom: 0;
+                         width: 100%;
+                         background-color: @theme;
+                         color: white;
+                    }
+               }
+          }
+     }
+}
+
+
+@media (max-width: 575.98px) {
+     .main-container{
+          .header-container{
+
+          }
+          .bottom-container{
+               flex-direction: column;
+
+               .sidebar-container{
+
+               }
+               .content-container{
+                    .jambotron{
+
+                    }
+                    .footer{
+
+                    }
+               }
+          }
+     }
+}
+
+@media (max-width: 767.98px) {
+     .main-container{
+          .header-container{
+
+          }
+          .bottom-container{
+               flex-direction: column;
+
+               .sidebar-container{
+
+               }
+               .content-container{
+                    .jambotron{
+
+                    }
+                    .footer{
+
+                    }
+               }
+          }
+     }
+}
+
+@media (max-width: 991.98px) {
+     .main-container{
+          .header-container{
+
+          }
+          .bottom-container{
+               flex-direction: column;
+
+               .sidebar-container{
+
+               }
+               .content-container{
+                    .jambotron{
+
+                    }
+                    .footer{
+
+                    }
+               }
+          }
+     }
+}
+
+@media (max-width: 1199.98px) {
+     .main-container{
+          .header-container{
+
+          }
+          .bottom-container{
+               flex-direction: column;
+
+               .sidebar-container{
+
+               }
+               .content-container{
+                    .jambotron{
+
+                    }
+                    .footer{
+
+                    }
+               }
+          }
+     }
+}
+
+@media (min-width: 1199.98px) {
+     .main-container{
+          .header-container{
+
+          }
+          .bottom-container{
+               flex-direction: row;
+
+               .sidebar-container{
+                    width: @SIZE;
+                    height: 100%;
+               }
+
+               .content-container{
+                    .jambotron{
+
+                    }
+                    .footer{
+
+                    }
+               }
+          }
+     }
+}

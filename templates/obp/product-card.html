@@ -1,0 +1,41 @@
+<div class="item-card" data-price = "{{product.get_price()}}" data-title = "{{product.title}}" data-date = "{{product.date}}">
+     <a href="{{ url('obp:product_page', args=[ product.id ]) }}" class = "product-image-container">
+          <img src="{{product.image.url}}" alt="" class = "card-img-top">
+          {% if product.title in stocks %}
+               <div class="flag">
+                    Акция
+               </div>
+          {% endif %}
+     </a>
+     <div class="card-content">
+           <h5 class="card-title content-item">
+                <a href="{{ url('obp:product_page', args=[ product.id ]) }}" class = "aWithoutEffects card-title">
+                     {{product.title}}
+               </a>
+          </h5>
+           <p class="card-size content-item">{{"%.f" % (product.size)}} {{product.unitSize}}</p>
+           <p class="card-text content-item">
+                {% for ingradient in product.product_composition_set.all() %}
+                     {{ingradient}},
+                {% endfor %}
+           </p>
+           {% if product.title in stocks %}
+          <div class="">
+               <span class = "oldPrice"><s>{{product.price}} грн.</s></span>
+               <span class = "product-price stockPrice">{{stocks[product.title]}} грн.</span>
+          </div>
+          {% else %}
+          <span class = "product-price">{{product.price}} грн.</span>
+          {% endif %}
+
+          {% if product.id in cartList %}
+          <div class="button-block w-100">
+               <input type="button" value = "В корзине" id = "{{product.id}}" class = "w-100 btn-basket deleteFromBasket">
+          </div>
+          {%else%}
+          <div class="button-block w-100">
+               <input type="button" name="addToBasket" value = "В корзину" id = "{{product.id}}" class = "w-100 btn-basket addToBasket">
+          </div>
+          {% endif %}
+     </div>
+</div>

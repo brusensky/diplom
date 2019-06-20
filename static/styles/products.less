@@ -1,0 +1,315 @@
+@import 'template_styles/base';
+
+.crumbs-container{
+     min-height: @SIZE;
+     display: flex;
+     flex-direction: row;
+     .crumbs{
+          flex-grow: 1;
+          flex-basis: 100%;
+     }
+     .sorting-container{
+          position: relative;
+          flex-grow: 1;
+          flex-basis: 100%;
+          text-align: right;
+               padding-right: 20px;
+          .sort-container{
+               display: inline-block;
+               vertical-align: middle;
+               .sort-btn{
+                    background-color: white;
+                    color: black;
+                    border: 1px solid @button_color;
+                    border-radius: @border_radius;
+               }
+               .sort-btn:hover{
+                    color: white;
+                    background-color: @button_color;
+               }
+               .dropdown-menu{
+                    padding: 15px 0;
+                    margin-top: 15px;
+                    //width: 100%;
+                    border-radius: @border_radius;
+                    //border: 1px solid green;
+                    box-shadow: 0 0 15px 2px @button_color;
+
+                    .dropdown-item{
+                         border-radius: 5px;;
+                         cursor: pointer;
+                    }
+                    .dropdown-item:hover{
+                         background-color: @button_color;
+                         color: white;
+                    }
+               }
+          }
+     }
+     .sorting-container:before {
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+          content: "";
+     }
+}
+.card-content-container{
+     .list-card{
+          padding: 0 1.5%;
+          display: flex;
+          flex-wrap: wrap;
+          .item-card{
+               position: relative;
+               border: none;
+               margin: 1.5%;
+               width: 22%;
+
+               border-radius: @border_radius;
+               .product-image-container{
+                    position: relative;
+                    width: 100%;
+                    display: block;
+                    img{
+                         border-radius: @border_radius;
+                    }
+                    .flag{
+                         position: absolute;
+                         transform-origin: 0 0;
+                         top: 0;
+                         right: 0;
+                         border-radius: 0 @border_radius 0 @border_radius;
+                         background-color: #f80000;
+                         color: white;
+                         padding: 10px 20px 10px 20px;
+                    }
+               }
+               .card-content{
+                    padding: 10px;
+                    .content-item{
+                         margin-bottom: 5px;
+                    }
+                    .card-text{
+                         font-size: 13px;
+                         font-style: italic;
+                         color: darkgray;
+                         height: 40px;
+                         overflow: hidden;
+                         text-overflow: ellipsis;
+                    }
+                    .card-size{
+                         font-size: 15px;
+                         color: darkgray;
+                    }
+                    span{
+                         display: block;
+                         margin-bottom: 10px;
+                    }
+
+                    .product-price{
+                         font-size: 18px;
+                    }
+                    .oldPrice, .stockPrice{
+                         display: inline-block;
+
+                    }
+                    .oldPrice{
+                         font-size: 18px;
+                    }
+                    .stockPrice{
+                         color: #f80000;
+                         margin-left: 10px;
+                         //font-weight: bold;
+                         font-size: 20px;
+                    }
+                    .button-block{
+                         text-align: center;
+                         .btn-basket{
+
+                              bottom: 0;
+                              display: inline-block;
+                              margin-top: 10px;
+                              border: 1px solid @button_color;
+                              border-radius: @border_radius;
+                              padding: 10px 20px 10px 20px;
+                         }
+                    }
+                    .addToBasket{
+                         background-color: white;
+                    }
+
+
+                    .addToBasket:hover, .deleteFromBasket{
+                         background-color: @button_color;
+                         color: white;
+                    }
+
+               }
+          }
+          .item-card:hover{
+               border-radius: @border_radius;
+               box-shadow: 0px 0px 15px 5px gray;
+
+               .card-title{
+                    color: @button_color;
+               }
+               .product-image-container{
+                    overflow: hidden;
+                    border-radius: @border_radius;
+                    img{
+                         transform:scale(1.05);
+                         //border-radius: 50px;
+                    }
+               }
+          }
+     }
+}
+
+.rotate{
+     animation: rotate 0.5s infinite;
+}
+
+@keyframes rotate {
+     from {transform: rotate(0deg);}
+     //50% {transform: rotate(240deg);;}
+     to {transform: rotate(360deg);}
+}
+
+
+@media (max-width: 575.98px) {
+     .crumbs-container{
+          flex-direction: column;
+     }
+     .card-content-container{
+          .list-card{
+               .item-card{
+                    margin: 1.5%;
+                    width: 96%;
+                    //flex-grow: 1;
+                    //flex-basis: 96%;
+                    border: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+// Малые девайсы («ландшафтные», < 768px)
+@media (min-width: 576px) and (max-width: 767.98px)  {
+     .crumbs-container{
+          flex-direction: column;
+     }
+     .card-content-container{
+          .list-card{
+               .item-card{
+                    margin: 1.5%;
+                    //flex-grow: 1;
+                    //flex-basis: 47%;
+                    width: 47%;
+                    border: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+// Средние девайсы («таблетки», < 992px)
+@media (min-width: 768px) and (max-width: 991.98px)  {
+     .card-content-container{
+          .list-card{
+               .item-card{
+                    margin: 1.5%;
+                    //flex-grow: 1;
+                    //flex-basis: 30%;
+                    width: 30%;
+                    //border: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+// Большие девайсы (большие десктопы, < 1200px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+     .card-content-container{
+          .list-card{
+               .item-card{
+                    margin: 1.5%;
+                    //flex-grow: 1;
+                    //flex-basis: 30%;
+                    width: 30%;
+                    //border: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+@media (min-width: 1200px) {
+     .card-content-container{
+          .list-card{
+               .item-card{
+                    border: none;
+                    margin: 1.5%;
+                    width: 22%;
+                    //flex-grow: 1;
+                    //flex-basis: 22%;
+                    //border: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+
+
+
+// .filter-sorting-container{
+//      display: inline-block;
+//      height: @SIZE;
+//
+//      .filter-container{
+//
+//      }
+//      .sort-container{
+//           margin-top: 20px;
+//           margin-right: 20px;
+//           .sort-btn{
+//                background-color: white;
+//                color: black;
+//                border: 1px solid @button_color;
+//                border-radius: @border_radius;
+//           }
+//           .sort-btn:hover{
+//                color: white;
+//                background-color: @button_color;
+//           }
+//           .dropdown-menu{
+//                padding: 15px 0;
+//                margin-top: 15px;
+//                width: 100%;
+//                border-radius: @border_radius;
+//                //border: 1px solid green;
+//                box-shadow: 0 0 15px 2px @button_color;
+//
+//                .dropdown-item{
+//                     border-radius: 5px;;
+//                     cursor: pointer;
+//                }
+//                .dropdown-item:hover{
+//                     background-color: @button_color;
+//                     color: white;
+//                }
+//           }
+//      }
+// }
+//
+// .card-list-block{
+//
+//
+//      .card-group{
+//           //padding: 10px;
+//           flex-wrap: wrap;
+//
+
+//      }
+//
+// }
+//
+// .filter-row{
+//           border-bottom: 1px solid lightgray;
+// }

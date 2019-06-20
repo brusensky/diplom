@@ -1,0 +1,104 @@
+a.aWithoutEffects {
+  color: black;
+  text-decoration: none;
+}
+a.aWithoutEffects:hover {
+  color: black;
+  text-decoration: none;
+}
+.crumbs-container {
+  border-bottom: 1px solid lightgray;
+  min-height: 75px;
+}
+.crumbs-container .crumbs {
+  margin-left: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 75px;
+}
+.crumbs-container a:hover {
+  color: #74c43f;
+}
+.crumbs-container .crumb-active {
+  color: #42aaff;
+}
+body .main-container {
+  height: 100vh;
+}
+body .main-container .header-container {
+  min-height: 75px;
+}
+body .main-container .bottom-container {
+  flex-grow: 1;
+  position: relative;
+}
+body .main-container .bottom-container .shadow-block {
+  position: fixed;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+body .main-container .bottom-container .sidebar-container {
+  min-width: 75px;
+}
+body .main-container .bottom-container .right-container .jambotron {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  border-radius: 0;
+  background-color: white;
+  position: relative;
+}
+body .main-container .bottom-container .right-container .footer-container {
+  background-color: #000000;
+}
+footer {
+  background-color: #000000;
+  color: white;
+}
+footer .column {
+  padding: 20px;
+}
+footer .column .container .logotype {
+  height: 150px;
+}
+footer .column .container ul {
+  padding-top: 20px;
+}
+footer .column .container ul li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+footer .column .container ul li a {
+  color: white;
+}
+footer .column .container ul li:hover a {
+  color: #74c43f;
+}
+footer .column .container .icons a {
+  display: inline-block;
+  border-radius: 50%;
+}
+footer .column .container .icons a img {
+  background-color: white;
+  border-radius: 50%;
+}
+footer .column .container .icons a:hover {
+  border: 1px solid white;
+}
+footer .column .list {
+  text-align: center;
+}
+footer .column .list ul {
+  text-align: left;
+  display: inline-block;
+}
+footer .column .list ul li {
+  margin-top: 10px;
+  list-style-type: none;
+}

@@ -1,0 +1,32 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block style %}
+     <link rel="stylesheet" href="{{ static('styles/about_us.css') }}">
+{% endblock %}
+
+{% block content %}
+
+     <div class="container-fluid page-container p-0">
+          <div class="crumbs-container">
+               <div class="crumbs">
+                    <a href="{{ url('obp:main_page') }}" class = "aWithoutEffects">Главная страница </a>
+                    &#8594;
+                    <span class = "aWithoutEffects crumb-active"> Про нас</span>
+               </div>
+          </div>
+          <div class="info">
+               <h4>Про нас:</h4>
+               <img src="{{static('images/logotype.png')}}" alt="">
+               <h4>Pizza-Dnepr</h4>
+               Никогда не знаешь, что ждет тебя на Хэллоуин, и так, однажды, работник самой обычной службы доставки еды вез на велосипеде очередной заказ за край города. Погода была мягко говоря не летная, но доставщик не сдавался и ехал дальше. Оставив за собой людные улицы, он подобрался к окраинам и уперся в кладбище. “Странно, — подумал доставщик, — адрес указывает на городское кладбище. Наверное, это какая-то ошибка или чья-то нелепая шутка”.
+          </div>
+     </div>
+{% endblock %}
+
+
+{% block script%}
+{% endblock %}

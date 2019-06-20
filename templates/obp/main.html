@@ -1,0 +1,163 @@
+{% extends 'includes/base.html'%}
+
+{% block title %}
+     Главная
+{% endblock %}
+
+{% block style %}
+     <link rel="stylesheet" type="text/css" href="{{static('styles/slick.css')}}"/>
+     <link rel="stylesheet" type="text/css" href="{{static('styles/slick-theme.css')}}"/>
+     <link rel="stylesheet" href="{{ static('styles/main.css') }}">
+
+{% endblock %}
+
+{% block content %}
+     <div class="main-container">
+          <div class="d-flex flex-column rr">
+               <div class="carousel slide-container" id = "carouselExampleIndicators" data-ride="carousel">
+                    <ol class = "carousel-indicators">
+                         {% for item in special_offers %}
+                              <li class = "indicator" data-target="#carouselExampleIndicators"></li>
+                         {% endfor %}
+                    </ol>
+                    <div class="carousel-inner w-100">
+                         {% for slide in special_offers %}
+                         <a class="carousel-item" href = "{{slide.url}}">
+                              <img src="{{slide.image.url}}" class="d-block image-slide" alt="f">
+                         </a>
+                         {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                         <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                         <span class="sr-only">Next</span>
+                    </a>
+               </div>
+
+
+               <div class="recommendations-container">
+                    <div class="title">
+                         <h3>Мы рекомендуем:</h3>
+                    </div>
+
+                    <div class="recommendations">
+                         {%for item in recommendations %}
+                              <div class="item">
+                                   <a href="{{ url('obp:product_page', args=[ item.id ]) }}" class = "aWithoutEffects">
+                                        <div class="image">
+                                             <img src="{{item.image.url}}" alt="" class = "slide-img">
+                                        </div>
+                                        <div class="item-title">
+                                             {{item.title}}
+                                        </div>
+                                   </a>
+                                   <div class="">
+                                        {{item.getPrice()}}
+                                   </div>
+                              </div>
+                         {% endfor %}
+                    </div>
+               </div>
+          </div>
+     </div>
+{% endblock %}
+
+{% block script%}
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+     <script type="text/javascript">
+          $(".carousel-item:first-of-type").addClass("active");
+          $(".indicator:first-of-type").addClass("active");
+          for( var i=0; i<$(".indicator").length; i++) {
+
+               $(".indicator:nth-child("+(i+1)+")").attr("data-slide-to", i);
+          }
+          $(document).ready(function(){
+               var count_ellements = 0;
+               var width_window = $(window).width();
+
+               $('.recommendations').slick({
+                 dots: true,
+                 infinite: false,
+                 speed: 300,
+                 slidesToShow: 4,
+                 slidesToScroll: 1,
+                 responsive: [
+                   {
+                     breakpoint: 1024,
+                     settings: {
+                       slidesToShow: 3,
+                       slidesToScroll: 1,
+                       infinite: true,
+                       dots: true
+                     }
+                   },
+                   {
+                     breakpoint: 800,
+                     settings: {
+                       slidesToShow: 2,
+                       slidesToScroll: 1
+                     }
+                   },
+                   {
+                     breakpoint: 600,
+                     settings: {
+                       slidesToShow: 1,
+                       slidesToScroll: 1,
+                      // infinite: true,
+                       //dots: true
+                     }
+                   }
+                 ]
+               });
+               // $('.recommendations').slick({
+               //   slidesToShow: 4,
+               //   slidesToScroll: 1,
+               // });
+
+
+
+
+               // function get_count_slides(){
+               //      var count_ellements = 0;
+               //      var width_window = $(window).width();
+               //
+               //      if (width_window >= 2000){
+               //           count_ellements = 5;
+               //      }
+               //      if (width_window >= 1200 && width_window < 2000){
+               //           count_ellements = 4;
+               //      }
+               //      if (width_window >= 768 && width_window < 1200){
+               //           count_ellements = 3;
+               //      }
+               //      if (width_window >= 550 && width_window < 768 ){
+               //           count_ellements = 2;
+               //      }
+               //
+               //      if (width_window < 550 ){
+               //           count_ellements = 1;
+               //      }
+               //      return count_ellements;
+               // }
+               // function windowSize(){
+               //      $('.recommendations').slick({
+               //        slidesToShow: 3,
+               //        slidesToScroll: 1,
+               //      });
+
+               //
+               //      $('.recommendations').slick({
+               //        slidesToShow: count_ellements,
+               //        slidesToScroll: 1,
+               //      });
+
+
+                //$(window).resize(windowSize);
+          });
+     </script>
+{% endblock %}

@@ -1,0 +1,245 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+     {{product.title}}
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{static('styles/slick.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{static('styles/slick-theme.css')}}"/>
+     <link rel="stylesheet" href="{{ static('styles/product.css') }}">
+{% endblock %}
+
+{% block content %}
+
+     <div class="container-fluid page-container p-0">
+          <div class="crumbs-container">
+               <div class="crumbs">
+                    <a href="{{ url('obp:main_page') }}" class = "aWithoutEffects">Главная страница </a>
+                    &#8594;
+                    <a href="{{ url('obp:products_page', args = [product.section_id.id]) }}" class = "aWithoutEffects"> {{product.section_id}} </a>
+                    &#8594;
+                    <span class = "aWithoutEffects crumb-active"> {{product}} </span>
+
+               </div>
+          </div>
+
+          <div class="product-container">
+                 <div class="product-image-container">
+                      <img src="{{product.image.url}}" alt="image" class = "product-image">
+                 </div>
+                 <div class="product-info-block">
+                      <div class="title-container">
+                           <h4 class = "title">{{product.title}}</h4>
+                           <div class="rating-container">
+                                <div class="rating_block" data-product = {{product.id}} data-rating = "{{rating}}">
+                                     <input name="rating" value="5" id="rating_5" type="radio" data-product = "{{product.id}}"/>
+                                     <label for="rating_5" class="label_rating"></label>
+
+                                     <input name="rating" value="4" id="rating_4" type="radio" data-product = "{{product.id}}"/>
+                                     <label for="rating_4" class="label_rating"></label>
+
+                                     <input name="rating" value="3" id="rating_3" type="radio" data-product = "{{product.id}}"/>
+                                     <label for="rating_3" class="label_rating"></label>
+
+                                     <input name="rating" value="2" id="rating_2" type="radio" data-product = "{{product.id}}"/>
+                                     <label for="rating_2" class="label_rating"></label>
+
+                                     <input name="rating" value="1" id="rating_1" type="radio" data-product = "{{product.id}}"/>
+                                     <label for="rating_1" class="label_rating"></label>
+                                </div>
+                                <span class = "average-rating">(Средняя оценка - {{average_rating.rating}}, оценок - {{average_rating.count}})</span>
+
+                           </div>
+                      </div>
+                      <p class="product-size">{{"%.f" % (product.size)}} {{product.unitSize}}</p>
+                      <p class="composition-container">
+                           {% for ingradient in product.product_composition_set.all() %}
+                                {{ingradient}},
+                           {% endfor %}
+                      </p>
+                      <div class="info-container">
+                           <img src="{{ static('images/delivery.svg') }}" alt="" class = "info-icon">
+                           <span class = "info-text">Бесплатная доставка на заказ от 150 грн.</span>
+                      </div>
+                      <br>
+                      <div class="info-container">
+                           <img src="{{ static('images/samovivoz.svg') }}" alt="" class = "info-icon">
+                           <span class = "info-text">Скидка 20% при самовызове</span>
+                      </div>
+                      {% if product.id in cartList %}
+                         <div class="buy-container">
+                              {{product.getPrice()}}
+                              <input type="button" id = "{{product.id}}" value="В корзину" class = "btn-basket deleteFromBasket">
+                         </div>
+                    {% else %}
+                      <div class="buy-container">
+                           {{product.getPrice()}}
+                           <input type="button" id = "{{product.id}}" value="В корзину" class = "btn-basket addToBasket">
+                      </div>
+                    {% endif %}
+
+                 </div>
+
+          </div>
+          <div class="other">
+               <div class="title">
+                    <h3>Похожие товары:</h3>
+               </div>
+               <div class="recommendations d-flex p-0 container">
+                    {%for item in other %}
+                         <div class="item flex-fill rec-item">
+                              <a href="{{ url('obp:product_page', args=[ item.id ]) }}" class = "aWithoutEffects">
+                                   <div class="image">
+                                        <img src="{{item.image.url}}" alt="">
+                                   </div>
+                                   <div class="item-title">
+                                        {{item.title}}
+                                   </div>
+                              </a>
+                              <div class="">
+                                   {{item.getPrice()}}
+                              </div>
+                         </div>
+                    {% endfor %}
+               </div>
+          </div>
+          <div class="comments-container">
+               <div class="title">
+                    <h3>Комментарии:</h3>
+               </div>
+               {% if auth.is_authorization() %}
+                    <div class="create_comment-container">
+                         <form class="" action="{{url('obp:addComment', args=[ product.id, auth.get_client_id() ])}}" method="get">
+                              <div class="">
+                                   {{comment_form.text}}
+                                   <input type="submit" name="" value="Добавить комментарий">
+                              </div>
+                         </form>
+                    </div>
+               {% endif %}
+               <div class="comments">
+                    {% for comment in product.product_comment_set.all() %}
+                    <div class="comment">
+                         <p class = "author">{{comment.client}}</p>
+                         <p class = "text">{{comment.text}}</p>
+                    </div>
+                    {% endfor %}
+               </div>
+          </div>
+
+     </div>
+{% endblock %}
+
+
+{% block script%}
+<script type="text/javascript">
+     $(document).ready(function () {
+          $rating = $(".rating_block").data("rating");
+          $("#rating_"+$rating).prop("checked", true)
+          $('[type="radio"]').change(function(){
+               product_id = $(".rating_block").data("product");
+               rating = this.value;
+               $.ajax({
+                   type: 'GET',
+                   async: true,
+                   url: 'http://127.0.0.1:8000/obp/addRating/',
+                   data: {product_id: product_id,
+                        rating: rating
+                   },
+                   dataType: 'json',
+                   success: function(data) {
+                   }
+               });
+          });
+
+          $('.btn-basket').click(function(){
+               if ( $(this).hasClass("addToBasket") ){
+                    $(this).attr("value", "В корзине");
+                    $(this).removeClass("addToBasket");
+                    $(this).addClass("deleteFromBasket");
+                    var product_id = parseInt( $( this ).attr('id'), 10 );
+
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/cart/add/',
+                        data: {id: product_id},
+                        dataType: 'json',
+                        success: function(data) {
+                             $("#count_ellements_in_basket").html('');
+                             $("#count_ellements_in_basket").append(data['count']);
+                        }
+                    });
+               }
+
+               else{
+                    $(this).attr("value", "В корзину");
+                    $(this).removeClass("deleteFromBasket");
+                    $(this).addClass("addToBasket");
+                    var product_id = parseInt( $( this ).attr('id'), 10 );
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/cart/remove/',
+                        data: {id: product_id},
+                        dataType: 'json',
+                        success: function(data) {
+                             $("#count_ellements_in_basket").html('');
+                             $("#count_ellements_in_basket").append(data['count']);
+
+                        }
+                    });
+               }
+          });
+     });
+</script>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+     <script type="text/javascript">
+          $(".carousel-item:first-of-type").addClass("active");
+          $(".indicator:first-of-type").addClass("active");
+          for( var i=0; i<$(".indicator").length; i++) {
+
+               $(".indicator:nth-child("+(i+1)+")").attr("data-slide-to", i);
+          }
+          $(document).ready(function(){
+
+               $('.recommendations').slick({
+                 dots: true,
+                 infinite: false,
+                 speed: 300,
+                 slidesToShow: 4,
+                 slidesToScroll: 1,
+                 responsive: [
+                   {
+                     breakpoint: 1024,
+                     settings: {
+                       slidesToShow: 3,
+                       slidesToScroll: 1,
+                       infinite: true,
+                       dots: true
+                     }
+                   },
+                   {
+                     breakpoint: 800,
+                     settings: {
+                       slidesToShow: 2,
+                       slidesToScroll: 1
+                     }
+                   },
+                   {
+                     breakpoint: 600,
+                     settings: {
+                       slidesToShow: 1,
+                       slidesToScroll: 1,
+                      // infinite: true,
+                       //dots: true
+                     }
+                   }
+                 ]
+               });
+          });
+     </script>
+{% endblock %}

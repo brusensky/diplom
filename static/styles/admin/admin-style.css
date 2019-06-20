@@ -1,0 +1,14 @@
+header {
+  height: 75px;
+  background-color: black;
+  color: white;
+}
+header .nav-link {
+  color: white;
+}
+.container-sidebar-content .sidebar {
+  width: 300px;
+}
+.container-sidebar-content .container-content {
+  flex-grow: 1;
+}

@@ -1,0 +1,60 @@
+@import 'main-style-file';
+
+footer{
+     background-color: @theme;
+     color: white;
+     .column{
+          padding: 20px;
+          .container{
+
+               .logotype{
+                    height: 150px;
+               }
+               ul{
+                    padding-top: 20px;
+                    li{
+                         list-style-type: none;
+                         margin-bottom: 10px;
+                         a{
+                              color: white;
+                         }
+                    }
+                    li:hover{
+                         a{
+                              color: @button_color;
+                         }
+                    }
+               }
+               .icons{
+                    a{
+                         display: inline-block;
+                         border-radius: 50%;
+                         img{
+                              background-color: white;
+                              border-radius: 50%;
+                         }
+                    }
+                    a:hover{
+                         border: 1px solid white;
+                    }
+               }
+
+          }
+
+
+
+
+          .list{
+               text-align: center;
+
+               ul{
+                    text-align: left;
+                    display: inline-block;
+                    li{
+                         margin-top: 10px;
+                         list-style-type: none;
+                    }
+               }
+          }
+     }
+}

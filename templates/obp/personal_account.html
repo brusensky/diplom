@@ -1,0 +1,96 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+     Авторизация
+{% endblock %}
+
+
+{% block style %}
+     <link rel="stylesheet" href="{{static('styles/personal_account.css')}}">
+{% endblock %}
+
+
+{% block content %}
+     {% if auth.is_authorization() %}
+          <div class="personal_account-page">
+               <div class="crumbs-container">
+                    <div class="crumbs">
+                         <a class = "aWithoutEffects" href="{{url('obp:main_page')}}">Главная страница</a>
+                         &#8594;
+                         <span class = "aWithoutEffects crumb-active">Личный кабинет</span>
+                    </div>
+               </div>
+               <div class="content-container">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                         <li class="nav-item">
+                              <a class="nav-link active" id="client-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Персональная информация</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Заказы</a>
+                         </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                         <div class="tab-pane fade show active client-tab" id="home" role="tabpanel" aria-labelledby="client-tab">
+                              <form class="" action="{{url('obp:change_client')}}" method="post">
+                                   {{csrf_input}}
+                                   <div class="name-block input-block">
+                                        <label for="{{client_form.name.id}}">Имя:</label>
+                                        {{client_form.name}}
+                                   </div>
+                                   <div class="mail-block input-block">
+                                            <!-- <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Имя пользователя"> -->
+                                            <label for="{{client_form.name.id}}">Электронный адрес:</label>
+                                            {{client_form.email}}
+                                   </div>
+                                   <div class="phone-block input-block">
+                                        <label for="{{client_form.phone_number.id}}">Номер телефона:</label>
+                                        {{client_form.phone_number }}
+                                   </div>
+                                   <div class="input-block">
+                                        <input type="submit" name="" value="Сохранить изменения" class = "submit">
+                                   </div>
+                              </form>
+                         </div>
+                         <div class="tab-pane fade p-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                              <table class = "table">
+                                   <thead class = "thead-dark">
+                                        <th scope = "col">#</th>
+                                        <th scope = "col">Дата</th>
+                                        <th scope = "col">Сумма</th>
+                                        <th scope = "col">Статус</th>
+                                   </thead>
+                                   <tbody>
+
+                                        {% for order in client.order_set.all() %}
+                                        <tr>
+                                             <th>{{order.id}}</th>
+                                             <td>{{order.dateTimeOrder.strftime("%H:%M  %d-%m-%Y")}}</td>
+                                             <td>{{order.price}} грн.</td>
+                                             <td>{{order.get_html_status()}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                   </tbody>
+                              </table>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     {% else %}
+          Ошибка авторизации!
+     {% endif %}
+{% endblock %}
+
+
+{% block script %}
+     <script type="text/javascript" src="{{static('scripts/validations.js')}}"></script>
+     <script type="text/javascript">
+          $(document).ready(function () {
+               //$("[name='name']").keypress(function(){
+               //     alert(1);
+               //});
+
+               onlyLetters("[name='name']");
+               max_length("[name='name']", 20);
+          })
+     </script>
+{% endblock %}

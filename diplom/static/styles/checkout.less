@@ -1,0 +1,93 @@
+@import 'template_styles/main-style-file';
+
+@table_border_color: lightgray;
+
+.checkout-container{
+     background-color: #ededed;
+     margin: 0;
+     .table-container{
+          background-color: white;
+          border: 1px solid @table_border_color;
+          border-radius: 20px;
+          margin-bottom: 20px;
+          table{
+               thead{
+                    border-bottom: 1px solid @table_border_color;
+               }
+               tbody{
+                    .product-image{
+                         width: 50px;
+                         border-radius: 5px;
+                    }
+                    tr:hover{
+                         background-color: @button_color;
+                    }
+               }
+          }
+     }
+
+     .form-container{
+          background-color: white;
+          border: 1px solid @table_border_color;
+          border-radius: 20px;
+          margin-bottom: 20px;
+          .form-row{
+               margin: 30px;
+
+               .form-row-column{
+                    padding: 10px;
+                    border-bottom: 1px solid @table_border_color;
+                    label{
+                         margin: 0;
+                         padding: 0;
+                    }
+                    input{
+                         padding: 5px;
+                         border-radius: 10px;
+
+                         border: 1px solid black;
+                    }
+               }
+          }
+          .btn-type-delivery{
+               padding: 10px;
+               border: 1px solid @button_color;
+               width: 40%;
+               border-radius: 20px;
+               text-align: center;
+          }
+          .btn-active, .btn-type-delivery:hover{
+               background-color: @button_color;
+               color: white;
+          }
+     }
+     .total-container{
+          background-color: white;
+          border: 1px solid @table_border_color;
+          border-radius: 20px;
+          //margin-bottom: 20px;
+          padding: 20px;
+          .table{
+               margin: 0;
+               padding: 0;
+          }
+          .checkout-btn{
+               cursor: pointer;
+               padding: 10px;
+               border: 1px solid @button_color;
+               border-radius: 20px;
+               text-align: center;
+          }
+          .checkout-btn:hover{
+               background-color: @button_color;
+               color: white;
+          }
+     }
+}
+
+
+@media (max-width: 1200px) {
+     .column{
+          width: 100%;
+     }
+}

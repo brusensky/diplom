@@ -1,0 +1,14 @@
+{% extends "includes/products-base.html" %}
+
+{% block title %}
+     Результат поиска по запросу: {{search_str}}
+{% endblock %}
+
+{% block crumbs %}
+     Поиск: {{search_str}}
+{% endblock %}
+
+
+{% block ifNotProducts %}
+     <h1>Ничего не найдено по запросу: {{search_str}}</h1>
+{% endblock %}

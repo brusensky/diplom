@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en">
+     <head>
+    <!-- Required meta tags -->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <link rel="stylesheet" href="{{static('styles/template_styles/base.css')}}">
+          <link rel="stylesheet" href="{{static('styles/template_styles/header.css') }}">
+          <link rel="stylesheet" href="{{static('styles/template_styles/sidebar.css') }}">
+          <link rel="stylesheet" href="{{static('styles/template_styles/footer.css') }}">
+          <link rel="shortcut icon" href="{{static('images/favicon.ico') }}" type="image/png">
+          {% block style %}
+          {% endblock %}
+
+          <title>{%block title%}{% endblock %}</title>
+          <!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+(function(){ var widget_id = 'i8rId03TE6';var d=document;var w=window;function l(){
+  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+  s.src = '//code-ru1.jivosite.com/script/widget/'+widget_id
+    ; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}
+  if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}
+  else{w.addEventListener('load',l,false);}}})();
+</script>
+<!-- {/literal} END JIVOSITE CODE -->
+
+     </head>
+     <body>
+          <div id="page-preloader">
+               <div class="preloader">
+                    <img src="{{static('images/logotype.png')}}" alt="">
+                    <div class="spinner" style = "background: url({{static('images/spinner.gif')}})"></div>
+               </div>
+          </div>
+          <div class = "d-flex flex-column main-container">
+               <div class="header-container">
+                    {% include 'includes/header.html' %}
+               </div>
+               <div class="bottom-container d-flex">
+                    <div class="shadow-block">
+                    </div>
+                    <div class="sidebar-container">
+                         {% include 'includes/sidebar.html' %}
+                    </div>
+                    <div class="content-container d-flex">
+                         <div class="jambotron">
+                              {% block content %}
+                              {% endblock %}
+                         </div>
+                         <div class="footer sticky-footer">
+                              {%include 'includes/footer.html'%}
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+
+          <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+          <script type="text/javascript" src="{{static('scripts/header.js')}}"></script>
+          <script type="text/javascript">
+          $(window).on('load', function () {
+              var $preloader = $('#page-preloader'),
+                  $spinner   = $preloader.find('.spinner');
+              $spinner.fadeOut();
+              $preloader.delay(350).fadeOut('slow');
+          });
+               </script>
+          {% block script%}
+          {% endblock %}
+     </body>
+</html>

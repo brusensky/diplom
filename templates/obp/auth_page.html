@@ -1,0 +1,99 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+     Авторизация
+{% endblock %}
+
+
+{% block style %}
+     <link rel="stylesheet" href="{{static('styles/auth.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid m-0 auth-page">
+
+     <div class="auth-container mx-auto">
+          <div class="title-block">
+               <span>Вход</span>
+          </div>
+          <div class="form-block">
+               <form class="" action="index.html" method="post">
+                    {{csrf_input}}
+                    <div class="phone_block block">
+                         <div class="input">
+                              <label for="{{ auth_form.phone_number.id_for_label }}">Номер телефона:</label>
+                              {{auth_form.phone_number}}
+                         </div>
+                         <div class="button">
+                              <button type="button" name="button" id = "btn-getCode" class = "btn">Получить код</button>
+                         </div>
+                    </div>
+                    <div class="code_block block">
+                         <div class="input">
+                              <label for="{{ auth_form.code.id_for_label }}">Код авторизации:</label>
+                              {{auth_form.code}}
+                         </div>
+                         <div class="button">
+                              <button type="button" name="button" id = "btn-login" class = "btn">Войти</button>
+                         </div>
+                    </div>
+               </form>
+          </div>
+     </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{{static('scripts/jquery.maskedinput.js')}}"></script>
+<script type="text/javascript" src="{{static('scripts/validations.js')}}"></script>
+     <script type="text/javascript">
+          $(document).ready(function () {
+                    $("[name='phone_number']").mask("+38(099) 999-9999");
+                    max_length( "[name='code']", 4 );
+                    onlyNumbers( "[name='code']");
+
+               $('#btn-getCode').click(function(){
+                    //alert($("[name='phone_number']").val())
+                    phone_number = $('.phone_number').val();
+                    phone_number = phone_number.replace(/[\s+()-]/g,'');
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/obp/get_code',
+                        data: {phone_number: phone_number},
+                        dataType: 'json',
+                        success: function(){
+                             $('#btn-getCode').addClass("display-none");
+                             $('.code-container').removeClass('display-none');
+                        },
+                        error: function(){
+                             alert("error");
+                        }
+                    });
+                    return false;
+               });
+               $('#btn-login').click(function(){
+                    phone_number = $('.phone_number').val();
+                    phone_number = phone_number.replace(/[\s+()-]/g,'');
+                    code = $('.code').val();
+
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/obp/login',
+                        data: {phone_number: phone_number,
+                             code: code,
+                        },
+                        dataType: 'json',
+                        success: function(){
+                            window.location.replace("http://127.0.0.1:8000/obp/personal_account");
+                        },
+                        error: function(){
+                             alert("error");
+                        }
+                    });
+               });
+          });
+     </script>
+{% endblock %}

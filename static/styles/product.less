@@ -1,0 +1,397 @@
+@import 'template_styles/base';
+
+@gray_color: darkgray;
+
+
+.page-container{
+     .crumbs-container{
+
+     }
+     .product-container{
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          .product-image-container{
+
+               img{
+                    border-radius: @border_radius;
+                    width: 100%;
+               }
+          }
+
+          .product-info-block{
+               .title-container{
+
+               }
+               .size{
+                    color: @gray_color;
+               }
+               .composition-container{
+                    padding: 10px 0;
+                    margin-top: 10px;
+                    color: @gray_color;
+                    font-size: 15px;
+                    font-style: italic;
+
+                    border-top: 1px solid lightgray;
+                    border-bottom: 1px solid lightgray;
+               }
+               .info-container{
+                    padding: 5px 10px;
+
+                    border: 1px solid lightgray;
+                    border-radius: @border_radius;
+                    //display: flex;
+                    flex-direction: row;
+                    //border-bottom: 1px solid lightgray;
+
+                    .info-icon{
+                         //height: 15px;
+                    }
+                    .info-text{
+                         display: inline-block;
+                         padding: 0 10px;
+                         line-height: 100%;
+                         vertical-align: middle;
+                         font-size: 15px;
+                    }
+               }
+
+               .buy-container{
+                    padding-top: 10px;
+                    .price{
+                         font-size: 20px;
+                    }
+                    .btn-basket{
+                         display: inline-block;
+                         margin-top: 10px;
+                         border: 1px solid @button_color;
+                         border-radius: @border_radius;
+                         padding: 10px 20px 10px 20px;
+                         font-size: 15px;
+                    }
+
+                    .addToBasket{
+                         background-color: white;
+                    }
+
+
+                    .addToBasket:hover, .deleteFromBasket{
+                         background-color: @button_color;
+                         color: white;
+                    }
+               }
+          }
+     }
+     .other{
+          border-top: 1px solid lightgray;
+          padding-left: 10px;
+          padding-right: 10px;
+
+          .title{
+               padding: 15px;
+          }
+          .item{
+               width: 50px;
+               margin: 0 10px;
+               img{
+                    width: 100%;
+                    border-radius: @border_radius;
+               }
+               .item-title{
+                    font-size: 20px;
+               }
+
+          }
+     }
+     .comments-container{
+          padding: 20px;
+          border-top: 1px solid lightgray;
+          .title{
+
+          }
+          .create_comment-container{
+               padding: inherit;
+               form{
+                    margin: 0 10px;
+                    width: 100%;
+                    div{
+                         height: 100px;
+                         width: 100%;
+                         textarea{
+                              width: 48%;
+                              border: none;
+                              box-shadow: 0 0 15px 2px gray;
+                              width: 50%;
+                              height: inherit;
+                              margin: 0;
+                              padding: 20px;
+                         }
+                         input[type=submit]{
+                              padding: 15px;
+                              border-radius: @border_radius;
+                              border: 1px solid red;
+                              color: white;
+                              background-color: red;
+
+                         }
+                    }
+               }
+          }
+          .comments{
+               display: flex;
+               flex-wrap: wrap;
+               padding: 20px;
+               .comment{
+                    box-shadow: 0 0 15px 2px gray;
+                    padding: 20px;
+                    margin: 1%;;
+                    width: 48%;
+                    .author{
+                         font-weight: 700;
+                    }
+               }
+          }
+     }
+}
+
+.comments-container{
+     .title{
+
+     }
+     .comments{
+          .comment{
+
+          }
+     }
+}
+
+
+
+@media (max-width: 767.98px) {
+     .page-container{
+          .crumbs-container{
+
+          }
+          .product-container{
+               padding: 20px;
+               display: flex;
+               flex-direction: column;
+               .product-image-container{
+
+                    img{
+                         width: 100px;
+                    }
+               }
+
+               .product-info-block{
+
+                    .info-container{
+                         width: 100%;
+                         .info-icon{
+                              height: 40px;
+                         }
+                         .info-text{
+                         }
+                    }
+                    .buy-container{
+                         .btn-basket{
+                              display: block;
+                              width: 100%;
+                         }
+                    }
+               }
+          }
+     }
+}
+
+
+
+// Средние девайсы («таблетки», >= 768px)
+@media (min-width: 768px) and (max-width: 991.98px) {
+     .page-container{
+          .crumbs-container{
+
+          }
+          .product-container{
+               padding: 20px;
+               display: flex;
+               flex-direction: row;
+               .product-image-container{
+                    width: 40%;
+                    margin-right: 10px;
+                    img{
+                         width: 100%;
+                    }
+               }
+
+               .product-info-block{
+                    flex-grow: 1;
+                    .info-container{
+                         width: 100%;
+                         .info-icon{
+                              height: 40px;
+                         }
+                         .info-text{
+                         }
+                    }
+                    .buy-container{
+                         .btn-basket{
+                              display: block;
+                              width: 100%;
+                         }
+                    }
+               }
+          }
+     }
+}
+
+// Большие девайсы (большие десктопы, >= 992px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+     .page-container{
+          .crumbs-container{
+
+          }
+          .product-container{
+               padding: 20px;
+               display: flex;
+               flex-direction: row;
+               .product-image-container{
+                    width: 40%;
+                    margin-right: 10px;
+                    img{
+                         width: 100%;
+                    }
+               }
+
+               .product-info-block{
+                    flex-grow: 1;
+                    .info-container{
+                         width: 100%;
+                         .info-icon{
+                              height: 40px;
+                         }
+                         .info-text{
+                         }
+                    }
+                    .buy-container{
+                         .btn-basket{
+                              display: block;
+                              width: 100%;
+                         }
+                    }
+               }
+          }
+     }
+}
+// Большие девайсы (большие десктопы, >= 1200px)
+@media (min-width: 1200px) {
+     .page-container{
+          .crumbs-container{
+
+          }
+          .product-container{
+               padding: 20px;
+               display: flex;
+               flex-direction: row;
+               .product-image-container{
+                    width: 30%;
+                    margin-right: 10px;
+                    img{
+                         width: 100%;
+                    }
+               }
+
+               .product-info-block{
+                    width: 40%;
+                    .info-container{
+                         width: 100%;
+                         .info-icon{
+                              height: 40px;
+                         }
+                         .info-text{
+                         }
+                    }
+                    .buy-container{
+                         .btn-basket{
+
+                         }
+                    }
+               }
+          }
+     }
+}
+//           }
+//
+//      }
+     // .other{
+     //      border-top: 1px solid lightgray;
+     //      .title{
+     //           padding: 15px;
+     //      }
+     //      padding-left: 10px;
+     //      padding-right: 10px;
+     //      .item{
+     //           width: 50px;
+     //           margin: 0 10px;
+     //           img{
+     //                width: 100%;
+     //                border-radius: @border_radius;
+     //           }
+     //           .item-title{
+     //                font-size: 20px;
+     //           }
+     //
+     //      }
+//      }
+//      .comment-container{
+//           width: 100%;
+//           border-top: 1px solid lightgray;
+//           padding: 20px;
+//           .comments{
+//                column-count: 2;
+//                padding: 0 20px;;
+//                .comment{
+//                     box-shadow: 0 0 15px 2px lightgray;
+//                     padding: 20px;
+//                     margin: 10px;
+//                     max-width: 50%;
+//                     min-width: 40%;
+//                }
+//           }
+//      }
+// }
+//
+//
+
+.rating-container{
+     display: flex;
+
+     .rating_block {
+          width: 125px;
+          height: 25px;
+          input[type="radio"] {
+               display: none;
+          }
+          .label_rating {
+               float: right;
+               display: block;
+               width: 25px;
+               height: 25px;
+               background: url(https://simplamarket.com/files/uploads/rating.png) no-repeat 50% 0;
+               cursor: pointer;
+          }
+     }
+     .average-rating{
+          display: block;
+          //float: right;
+     }
+}
+
+/*Пишем правила смены положения background-а*/
+.rating_block .label_rating:hover, /*Правило для ховера на текущий лейбл*/
+.rating_block .label_rating:hover ~ .label_rating, /*Правило для всех следующих лейблов по DOM дереву*/
+.rating_block input[type="radio"]:checked ~ .label_rating /*Правило для всех следующих лейблов после выбранного инпута, чтобы звездочки как бы зафиксировались*/
+{
+  background-position: 50% -25px;
+}

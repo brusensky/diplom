@@ -1,0 +1,280 @@
+@import 'template_styles/base';
+.auth-page{
+     background-color: #ededed;
+     height: 100vh;
+}
+.auth-container{
+     padding: 20px 0;
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+     .title-block{
+          margin: 0;
+          padding: 0;
+          font-size: 25px;
+          text-align: center;
+     }
+     .form-block{
+
+          form{
+
+               font-size: 17px;
+               display: flex;
+               flex-direction: column;
+               .block{
+                    display: flex;
+                    flex-direction: column;
+                    vertical-align: bottom;
+
+                    .input{
+                         label{
+                              display: block;
+                              margin: 0;
+                         }
+                         input{
+                              border-radius: @border_radius;
+                              border: 1px solid black;
+                              padding: 10px;
+                         }
+                         input:focus{
+                              outline: none !important;
+                         }
+                    }
+                    .button{
+                         button{
+                              border: 1px solid @button_color;
+                              border-radius: @border_radius;
+                              padding: 10px;
+                         }
+                         button:hover{
+                              background-color: @button_color;
+                              color: white;
+                         }
+                    }
+               }
+               .phone_block{
+
+               }
+               .code_block{
+
+               }
+          }
+     }
+}
+
+
+
+
+@media (max-width: 767.98px) {
+     .auth-container{
+          display: flex;
+          .title-block{
+
+          }
+          .form-block{
+               form{
+                    .block{
+                         label{
+
+                         }
+                         input{
+
+                         }
+                         button{
+
+                         }
+                    }
+                    .phone_block{
+
+                    }
+                    .code_block{
+
+                    }
+               }
+          }
+     }
+}
+
+// Средние девайсы («таблетки», >= 768px)
+@media (min-width: 768px) and (max-width: 991.98px) {
+     .auth-container{
+          display: flex;
+          .title-block{
+
+          }
+          .form-block{
+               form{
+                    .block{
+                         label{
+
+                         }
+                         input{
+
+                         }
+                         button{
+
+                         }
+                    }
+                    .phone_block{
+
+                    }
+                    .code_block{
+
+                    }
+               }
+          }
+     }
+}
+
+// Большие девайсы (большие десктопы, >= 992px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+     .auth-container{
+          .title-block{
+
+          }
+          .form-block{
+               form{
+                    .block{
+                         label{
+
+                         }
+                         input{
+
+                         }
+                         button{
+
+                         }
+                    }
+                    .phone_block{
+
+                    }
+                    .code_block{
+
+                    }
+               }
+          }
+     }
+}
+
+// Большие девайсы (большие десктопы, >= 1200px)
+@media (min-width: 1200px) {
+     .auth-page{
+          padding: 0;
+          position: relative;
+     }
+     .auth-container{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 50%;
+          border: 1px solid black;
+          border-radius: @border_radius;
+
+          .title-block{
+
+          }
+          .form-block{
+               width: 100%;
+               text-align: center;
+               form{
+                    display: inline-block;
+                    text-align: left;
+                    //width: 50%;
+                    .block{
+                         flex-direction: row;
+                         padding: 0;
+                         div{
+                              margin: 10px;
+                         }
+                         .input{
+                              label{
+                                   display: block;
+                              }
+                              input{
+
+                              }
+                         }
+                         .button{
+                              height: inherit;
+                              //position: relative;
+
+                              button{
+                                   display: inline-block;
+                                   vertical-align: bottom;
+                                   //bottom: 0;
+                                   width: 200px;
+                              }
+                         }
+                         .button::before{
+                              display: inline-block;
+                              height: 100%;
+                              vertical-align: bottom;
+                              content: "";
+                         }
+                    }
+                    .phone_block{
+                    }
+                    .code_block{
+                    }
+               }
+          }
+     }
+}
+
+
+
+
+//
+// .auth-page{
+//      background-color: #ededed;
+//      text-align: center;
+//
+//      .auth-container{
+//           padding: 20px;
+//           display: inline-block;
+//           vertical-align: middle;
+//
+//           border-radius: @border_radius;
+//           border: 1px solid black;
+//           background-color: white;
+//           h1{
+//                margin: 20px;
+//           }
+//           label{
+//                display: block;
+//                margin: 0;
+//           }
+//           input{
+//                display: inline-block;
+//                border-radius: @border_radius;
+//                border: 1px solid black;
+//                padding: 5px;
+//           }
+//           .display-none{
+//                display: none;
+//           }
+//
+//           .btn{
+//                display: inline-block;
+//                background-color: white;
+//                border: 1px solid @button_color;
+//                border-radius: @border_radius;
+//
+//                padding: 10px 20px 10px 20px;
+//                font-size: 15px;
+//                margin: 20px;
+//           }
+//           .btn:hover{
+//                background-color: @button_color;
+//                color: white;
+//           }
+//      }
+// }
+//
+// .auth-page:before {
+//     display: inline-block;
+//     height: 100%;
+//     vertical-align: middle;
+//     content: "";
+// }

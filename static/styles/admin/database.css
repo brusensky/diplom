@@ -1,0 +1,8 @@
+.database-sidebar .nav-link {
+  height: 75px;
+  border-bottom: 1px solid lightgray;
+}
+.database-sidebar .nav-link:hover {
+  background-color: #008000;
+  color: white;
+}

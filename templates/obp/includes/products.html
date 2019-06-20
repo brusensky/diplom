@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+{% extends "includes/base.html" %}
+{% block title %}
+{{section}}
+{% endblock %}
+
+{% block style%}
+
+<link rel="stylesheet" href="{{static('styles/products.css')}}">
+
+{% endblock %}
+
+{% block content %}
+     {% if products %}
+     <div class="crumbs-container">
+          <div class="crumbs">
+               <a class = "aWithoutEffects" href="{{url('obp:main_page')}}">Главная страница</a>
+               &#8594;
+               <span class = "aWithoutEffects crumb-active"> {{section}} </span>
+          </div>
+          <div class="sorting-container">
+               <div class="dropdown sort-container">
+                    <button class="btn btn-outline-success dropdown-toggle sort-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         По возростанию цены
+                    </button>
+                    <div class="dropdown-menu" id = "sort-options" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item sort-button" id = "sortPopulation">По популярности</a>
+                         <a class="dropdown-item sort-button asc" data-sort-by="price">По возростанию цены</a>
+                         <a class="dropdown-item sort-button" data-sort-by="price">По убыванию цены</a>
+                         <a class="dropdown-item sort-button asc" data-sort-by="title">По алфавиту</a>
+                         <a class="dropdown-item sort-button" id = "sortDate">По новизне</a>
+                    </div>
+              </div>
+          </div>
+     </div>
+     <div class="card-content-container">
+          <div class="list-card">
+               {% for product in products %}
+                    {% include "product-card.html" %}
+              {% endfor %}
+          </div>
+     </div>
+     {% else %}
+          <h1>Нет товаров в этой категории</h1>
+     {% endif %}
+{% endblock %}
+
+{% block script%}
+     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+     <script type="text/javascript">
+
+     $(document).ready(function () {
+          var $container = $('.list-card');
+          $('.sort-button').click(function(){
+               var $this = $(this);
+               sortName = $this.attr('data-sort-by');
+               asc = $this.hasClass('asc');
+               $container.isotope({
+                    sortBy : sortName,
+                    sortAscending : asc
+               });
+               return false;
+          });
+
+          $(function(){
+               $container.isotope({
+                    itemSelector : '.itefm-card',
+                    getSortData : {
+                         price: '.product-price parseInt',
+                         title : '.card-title',
+                         number : '.number parseInt',
+                         weight : '.weight parseFloat'
+                    }
+               });
+          });
+
+          $('.btn-basket').click(function(){
+               if ( $(this).hasClass("addToBasket") ){
+                    $(this).attr("value", "В корзине");
+                    $(this).removeClass("addToBasket");
+                    $(this).addClass("deleteFromBasket");
+                    var product_id = parseInt( $( this ).attr('id'), 10 );
+
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/cart/add/',
+                        data: {id: product_id},
+                        dataType: 'json',
+                    });
+               }
+
+               else{
+                    $(this).attr("value", "В корзину");
+                    $(this).removeClass("deleteFromBasket");
+                    $(this).addClass("addToBasket");
+                    var product_id = parseInt( $( this ).attr('id'), 10 );
+                    $.ajax({
+                        type: 'GET',
+                        async: true,
+                        url: 'http://127.0.0.1:8000/cart/remove/',
+                        data: {id: product_id},
+                        dataType: 'json',
+                    });
+               }
+          });
+
+
+     });
+</script>
+{% endblock %}

@@ -1,0 +1,58 @@
+@import 'template_styles/base';
+.slide-container{
+     .carousel-item{
+          position: relative;
+          //width: 100px;
+          //height: 100px;
+          max-width: 100%;
+          overflow: hidden;
+          img{
+               //position: absolute;
+               //max-width: 1000px;
+               min-width: 100%;
+               max-width: 100%;
+               //height: 100px;
+               //left: 0;
+               //top: 0;
+          }
+     }
+}
+.recommendations-container{
+
+     margin-top: 20px;
+     width: 100%;
+     text-align: center;
+     position: relative;
+     .title{
+               text-align: left;
+               padding: 15px;
+     }
+
+     .recommendations{
+          display: inline-block;
+          //margin-left: 10px;
+          max-width: 85vw;
+          padding-left: 10px;
+          padding-right: 10px;
+
+          .item{
+               margin: 0 10px;
+               img{
+                    //border-radius: 80px;
+                    width: 97%;
+                    border-radius: @border_radius;
+               }
+               .item-title{
+                    font-size: 20px;
+               }
+
+          }
+          .item:hover{
+               box-shadow: 0 0 10px 5px gray;
+               .item-title{
+                    color: @button_color;
+               }
+          }
+     }
+
+}

@@ -1,0 +1,236 @@
+@import 'base';
+
+
+.sidebar-block{
+     background-color: red;
+     //position: fixed;
+     overflow: visible;
+     width: 200px;
+     .sidebar{
+          position: fixed;
+          height: inherit;
+          width: inherit;
+
+          z-index: 100;
+          display: flex;
+          background-color: white;
+          box-shadow: 0 0 10px 0 black;
+          .sidebar-item{
+               overflow: hidden;
+               .sidebar-item-image{
+                    display: inline-block;
+                    height: @SIZE;
+                    width: @SIZE;
+                    text-align: center;
+                    line-height: @SIZE;
+                    img{
+                         width: @SIZE * 0.65;
+                         height: @SIZE * 0.65;
+                         display: inline-block;
+                         vertical-align: middle;
+                    }
+               }
+               .title{
+
+               }
+          }
+          .sidebar-item:hover{
+               display: block;
+               background-color: @button_color;
+          }
+     }
+}
+
+
+
+@media (max-width: 575.98px) {
+     .sidebar-block{
+          height: @SIZE;
+          width: 100%;
+          .sidebar{
+               flex-direction: row;
+               overflow: scroll;
+               .sidebar-item{
+                    height: 100%;
+                    min-width: @SIZE * 3 - 75;
+
+                    flex-grow: 1;
+               }
+               .sidebar-item:not(:last-child){
+                    border-right: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+// Малые девайсы («ландшафтные», >= 575px)
+@media (min-width: 576px) and (max-width: 767.98px) {
+     .sidebar-block{
+          height: @SIZE;
+          width: 100%;
+          .sidebar{
+               flex-direction: row;
+               overflow: scroll;
+               .sidebar-item{
+                    height: 100%;
+                    min-width: @SIZE * 3;
+                    flex-grow: 1;
+               }
+               .sidebar-item:not(:last-child){
+                    border-right: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+// Средние девайсы («таблетки», >= 768px)
+@media (min-width: 768px) and (max-width: 991.98px) {
+     .sidebar-block{
+          height: @SIZE;
+          width: 100%;
+          .sidebar{
+               flex-direction: row;
+               overflow: scroll;
+               .sidebar-item{
+                    height: 100%;
+                    min-width: @SIZE * 3;
+                    flex-grow: 1;
+               }
+               .sidebar-item:not(:last-child){
+                    border-right: 1px solid lightgray;
+               }
+          }
+     }
+}
+
+// Большие девайсы (большие десктопы, >= 992px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+     .sidebar-block{
+          height: 100%;
+          width: @SIZE;
+          .sidebar{
+               flex-direction: column;
+               .sidebar-item{
+                    height: @SIZE;
+                    border-bottom: 1px solid lightgray;
+               }
+          }
+          .sidebar:hover{
+               width: @SIZE * 3;
+               transition: width 0.65s;
+          }
+     }
+}
+
+// Большие девайсы (большие десктопы, >= 1200px)
+@media (min-width: 1200px) {
+     .sidebar-block{
+          height: 100%;
+          width: @SIZE;
+          .sidebar{
+               flex-direction: column;
+               .sidebar-item{
+                    height: @SIZE;
+                    border-bottom: 1px solid lightgray;
+               }
+          }
+          .sidebar:hover{
+               width: 200px;
+               transition: width 0.65s;
+          }
+     }
+}
+
+
+//
+// .sidebar-block{
+//      position: relative;
+//      width: @SIZE;
+//      height: 100%;
+//
+//
+//      .sidebar{
+//           position: fixed;
+//           display: flex;
+//           flex-direction: column;
+//           background-color: white;
+//           box-shadow: 0 0 10px 0 black;
+//           z-index: 2;
+//           width: 75px;
+//      }
+//
+//      .nav-item{
+//           height: @SIZE;
+//           text-align: center;
+//           vertical-align: middle;
+//           line-height: @SIZE;
+//           border-bottom: 1px solid lightgray;
+//           list-style: none;
+//           z-index: 1;
+//           .sidebar-item{
+//                position: relative;
+//                display: block;
+//                height: 100%;
+//                width: 100px;
+//                text-decoration: none;
+//
+               // .sidebar-item-image{
+               //      height: @SIZE;
+               //      width: @SIZE;
+               //      position: absolute;
+               //      top: 0;
+               //      left: 0;
+               //      display: block;
+               //      text-align: center;
+               //      line-height: @SIZE;
+               //      .image{
+               //           width: @SIZE * 0.65;
+               //           height: @SIZE * 0.65;
+               //           display: inline-block;
+               //           vertical-align: middle;
+               //      }
+               // }
+//                .title{
+//                     line-height: @SIZE;
+//                     color: black;
+//                     margin-left: @SIZE;
+//                }
+//           }
+//      }
+//      .nav-item:hover{
+//           background-color: @button_color;
+//      }
+// }
+
+
+
+@media (max-width: 767.98px) {
+     // .sidebar{
+     //      height: @SIZE;
+     //      width: 100%;
+     //      overflow: scroll;
+     //      flex-direction: row;
+     //      .nav-item{
+     //           min-width: 200px;
+     //      }
+     // }
+}
+
+@media (min-width: 1199.98px) {
+     // .sidebar{
+     //      width: @SIZE;
+     //      height: 100%;
+     //      .nav-item{
+     //           width: @SIZE;
+     //      }
+     //
+     // }
+     // .sidebar:hover{
+     //      width: 200px;
+     //      transition: width 0.65s;
+     //      z-index: 2;
+     //      .nav-item{
+     //           width: 200px;
+     //      }
+     // }
+}

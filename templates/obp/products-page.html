@@ -1,0 +1,14 @@
+{% extends "includes/products-base.html" %}
+
+{% block title %}
+     {{section}}
+{% endblock %}
+
+{% block crumbs %}
+     {{section}}
+{% endblock %}
+
+
+{% block ifNotProducts %}
+     <h1>Нет товаров в этой категории</h1>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block style %}
+     <link rel="stylesheet" href="{{ static('styles/about_us.css') }}">
+{% endblock %}
+
+{% block content %}
+
+     <div class="container-fluid page-container p-0">
+          <div class="crumbs-container">
+               <div class="crumbs">
+                    <a href="{{ url('obp:main_page') }}" class = "aWithoutEffects">Главная страница </a>
+                    &#8594;
+                    <span class = "aWithoutEffects crumb-active"> Контакты</span>
+               </div>
+          </div>
+          <div class="info">
+               <img src="{{static('images/logotype.png')}}" alt="">
+               <h4>Контакты:</h4>
+               <p>Онлайн-ресторан "Pizza-Dnepr"</p>
+               <p>г. Днепр, Сичеславская набережная, 21</p>
+               <p>Телефоны по всем вопросам (автоперезвон):</p>
+               <p>(093)-042-17-01</p>
+               <p>(095)-042-17-01</p>
+               <p>(097)-042-17-01</p>
+               <p>Группа в FB - www.facebook.com/pizza_dnepr</p>
+               <p>Группа в Instagram - www.instagram.com/pizza_dnepr</p>
+          </div>
+     </div>
+{% endblock %}
+
+
+{% block script%}
+{% endblock %}

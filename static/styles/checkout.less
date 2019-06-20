@@ -1,0 +1,355 @@
+@import 'template_styles/base';
+@table_border_color: lightgray;
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.invalidField{
+     border: 1.5px solid red !important;
+}
+
+.disabled{
+     //background-color: red !important;
+     //disabled: true;
+     pointer-events: none;
+}
+
+.checkout-page{
+     background-color: #ededed;
+     .cart-container{
+          background-color: white;
+          border: 1px solid @table_border_color;
+          border-radius: @border_radius;
+          margin-bottom: 20px;
+          table{
+               thead{
+                    border-bottom: 1px solid @table_border_color;
+               }
+               tbody{
+                    .product-image{
+                         width: 50px;
+                         border-radius: 5px;
+                    }
+                    tr:hover{
+                         background-color: @button_color;
+                    }
+               }
+          }
+     }
+     .form-order-container{
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: @border_radius;
+          background-color: white;
+          border: 1px solid @table_border_color;
+          .type-of-delivery{
+               display: flex;
+               .btn-type-delivery{
+                    //display: inline-block;
+                    flex-grow: 1;
+                    flex-basis: 100%;
+                    padding: 20px;
+                    text-align: center;
+                    cursor: pointer;
+                    border-bottom: 1px solid lightgray;
+               }
+               .btn-active{
+                    background-color: @button_color;
+                    color: white;
+               }
+          }
+          .form-row{
+               display: flex;
+               margin-top: 20px;
+               label{
+                    display: block;
+                    margin: 0;
+               }
+               input{
+                    border-radius: @border_radius;
+                    border: 1px solid lightgray;
+                    padding: 10px;
+               }
+          }
+     }
+     .total-container{
+          border-radius: @border_radius;
+          border: 1px solid @table_border_color;
+          background-color: white;
+          padding: 30px;
+          margin-bottom: 20px;
+          font-size: 17px;
+
+          input{
+               padding: 20px;
+               width: 100%;
+               border-radius: @border_radius;
+               border: 1px solid @button_color;
+               background-color: white;
+               color: black;
+          }
+          input:hover{
+               background-color: @button_color;
+               color: white;
+          }
+     }
+}
+
+@media (max-width: 767.98px) {
+
+     .checkout-page{
+          .cart-container{
+               width: 100%;
+          }
+          .form-order-container{
+               .type-of-delivery{
+                    .btn-type-delivery{
+                    }
+                    .btn-active{
+                    }
+               }
+               .form-row{
+                    display: flex;
+                    flex-direction: column;
+                    .form-field{
+                         label{
+                              display: block;
+                              margin: 0;
+                         }
+                         input{
+                              border-radius: @border_radius;
+                              border: 1px solid lightgray;
+                              padding: 10px;
+                              width: 100%;
+                         }
+                    }
+               }
+          }
+     }
+     .total-container{
+          width: 80%;
+     }
+}
+
+// Средние девайсы («таблетки», >= 768px)
+@media (min-width: 768px) and (max-width: 1199.98px) {
+     .checkout-page{
+          .cart-container{
+               width: 75%;
+          }
+          .form-order-container{
+               width: 75%;
+               .type-of-delivery{
+                    .btn-type-delivery{
+                    }
+                    .btn-active{
+                    }
+               }
+               .form-row{
+                    display: flex;
+                    flex-direction: row;
+                    .form-field{
+                         flex-grow: 1;
+                         label{
+                              display: block;
+                              margin: 0;
+                         }
+                         input{
+                              border-radius: @border_radius;
+                              border: 1px solid lightgray;
+                              padding: 10px;
+                              width: 100%;
+                         }
+                    }
+                    .form-field:not(:last-child){
+                         margin-right: 20px;
+                    }
+               }
+               .delivery-form-container{
+                    .field-city{
+                         flex-grow: 3;
+                    }
+                    .field-street{
+                         flex-grow: 4;
+                    }
+                    .field-house{
+                         flex-grow: 1;
+                         flex-shrink: 3;
+                    }
+                    .field-entrance{
+                         flex-grow: 1;
+                         flex-shrink: 3;
+                    }
+                    .field-apartament{
+                         flex-grow: 1;
+                         flex-shrink: 3;
+                    }
+               }
+          }
+     }
+     .total-container{
+          width: 50%;
+     }
+}
+
+// Большие девайсы (большие десктопы, >= 1200px)
+@media (min-width: 1200px) {
+     .checkout-page{
+          .cart-container{
+               width: 50%;
+          }
+          .form-order-container{
+               width: 50%;
+               .type-of-delivery{
+                    .btn-type-delivery{
+                    }
+                    .btn-active{
+                    }
+               }
+               .form-row{
+                    display: flex;
+                    flex-direction: row;
+                    .form-field{
+                         flex-grow: 1;
+                         label{
+                              display: block;
+                              margin: 0;
+                         }
+                         input{
+                              border-radius: @border_radius;
+                              border: 1px solid lightgray;
+                              padding: 10px;
+                              width: 100%;
+                         }
+                    }
+                    .form-field:not(:last-child){
+                         margin-right: 20px;
+                    }
+               }
+               .delivery-form-container{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    .field-city{
+                         flex-grow: 3;
+
+                    }
+                    .field-street{
+                         flex-grow: 4;
+                    }
+                    .field-house{
+                         flex-grow: 1;
+                         flex-shrink: 3;
+                    }
+                    .field-entrance{
+                         flex-grow: 1;
+                         flex-shrink: 3;
+                    }
+                    .field-apartament{
+                         flex-grow: 1;
+                         flex-shrink: 2;
+                    }
+               }
+          }
+     }
+     .total-container{
+          width: 25%;
+     }
+}
+
+
+//
+// .checkout-container{
+//      background-color: #ededed;
+//      margin: 0;
+//      .table-container{
+//           background-color: white;
+//           border: 1px solid @table_border_color;
+//           border-radius: 20px;
+//           margin-bottom: 20px;
+//           table{
+//                thead{
+//                     border-bottom: 1px solid @table_border_color;
+//                }
+//                tbody{
+//                     .product-image{
+//                          width: 50px;
+//                          border-radius: 5px;
+//                     }
+//                     tr:hover{
+//                          background-color: @button_color;
+//                     }
+//                }
+//           }
+//      }
+//
+//      .form-container{
+//           background-color: white;
+//           border: 1px solid @table_border_color;
+//           border-radius: 20px;
+//           margin-bottom: 20px;
+//           .form-row{
+//                margin: 30px;
+//
+//                .form-row-column{
+//                     padding: 10px;
+//                     border-bottom: 1px solid @table_border_color;
+//                     label{
+//                          margin: 0;
+//                          padding: 0;
+//                     }
+//                     input{
+//                          padding: 15px;
+//                          border-radius: 10px;
+//
+//                          border: 1px solid black;
+//                     }
+//                }
+//           }
+//           .btn-type-delivery{
+//                padding: 10px;
+//                border: 1px solid @button_color;
+//                width: 40%;
+//                border-radius: 20px;
+//                text-align: center;
+//           }
+//           .btn-active, .btn-type-delivery:hover{
+//                background-color: @button_color;
+//                color: white;
+//           }
+//      }
+//      .total-container{
+//           background-color: white;
+//           border: 1px solid @table_border_color;
+//           border-radius: 20px;
+//           //margin-bottom: 20px;
+//           padding: 20px;
+//           .table{
+//                margin: 0;
+//                padding: 0;
+//           }
+//           .checkout-btn{
+//                cursor: pointer;
+//                padding: 10px;
+//                border: 1px solid @button_color;
+//                border-radius: 20px;
+//                text-align: center;
+//           }
+//           .checkout-btn:hover{
+//                background-color: @button_color;
+//                color: white;
+//           }
+//      }
+// }
+//
+//
+// @media (max-width: 1200px) {
+//      .column{
+//           width: 100%;
+//      }
+// }

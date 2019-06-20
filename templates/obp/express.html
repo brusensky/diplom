@@ -1,0 +1,37 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block style %}
+     <link rel="stylesheet" href="{{ static('styles/about_us.css') }}">
+{% endblock %}
+
+{% block content %}
+
+     <div class="container-fluid page-container p-0">
+          <div class="crumbs-container">
+               <div class="crumbs">
+                    <a href="{{ url('obp:main_page') }}" class = "aWithoutEffects">Главная страница </a>
+                    &#8594;
+                    <span class = "aWithoutEffects crumb-active"> Оплата и доставка</span>
+               </div>
+          </div>
+          <div class="info">
+               <img src="{{static('images/logotype.png')}}" alt="">
+               <h4>Оплата и доставка:</h4>
+               <p><strong>Доставка курьером</strong>
+               <br /> Заказывайте любым удобным способом в любой день с 10.00 до 22.00, получайте заказ на указанный вами адрес в течение 90 мин.
+               <br /> Минимальная сумма заказа от 150 грн*,а доставка БЕСПЛАТНАЯ!
+               <p><strong>Забрать из ресторана.</strong>
+                    <br />Заказывайте любым удобным способом. Получайте заказ со скидкой 10% ресторане «Rock n Roll» по адресам:
+                    <br />г Днепр ул. Сичеславская Набережная 16А
+                    <br />И получайте заказ в точно указанное вами время. Заказ может быть оформлен не менее чем за 40 минут до получения. Минимальная сумма заказа – 50 грн.</p>
+          </div>
+     </div>
+{% endblock %}
+
+
+{% block script%}
+{% endblock %}

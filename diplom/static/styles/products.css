@@ -1,0 +1,187 @@
+a.aWithoutEffects {
+  color: black;
+  text-decoration: none;
+}
+a.aWithoutEffects:hover {
+  color: black;
+  text-decoration: none;
+}
+.crumbs-container {
+  border-bottom: 1px solid lightgray;
+  min-height: 75px;
+}
+.crumbs-container .crumbs {
+  margin-left: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 75px;
+}
+.crumbs-container a:hover {
+  color: #74c43f;
+}
+.crumbs-container .crumb-active {
+  color: #42aaff;
+}
+body .main-container {
+  height: 100vh;
+}
+body .main-container .header-container {
+  min-height: 75px;
+}
+body .main-container .bottom-container {
+  position: relative;
+  display: flex;
+}
+body .main-container .bottom-container .content-container {
+  min-width: 75px;
+  flex-grow: 1;
+}
+body .main-container .bottom-container .content-container .jambotron {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  z-index: 1;
+  background-color: white;
+  padding-bottom: 30px;
+}
+body .main-container .bottom-container .content-container .footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  color: white;
+}
+@media (max-width: 575.98px) {
+  .main-container .bottom-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 767.98px) {
+  .main-container .bottom-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 991.98px) {
+  .main-container .bottom-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1199.98px) {
+  .main-container .bottom-container {
+    flex-direction: column;
+  }
+}
+@media (min-width: 1199.98px) {
+  .main-container .bottom-container {
+    flex-direction: row;
+  }
+  .main-container .bottom-container .sidebar-container {
+    width: 75px;
+    height: 100%;
+  }
+}
+.filter-sorting-container {
+  display: inline-block;
+  height: 75px;
+}
+.filter-sorting-container .sort-container {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.filter-sorting-container .sort-container .sort-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid #74c43f;
+  border-radius: 15px;
+}
+.filter-sorting-container .sort-container .sort-btn:hover {
+  color: white;
+  background-color: #74c43f;
+}
+.filter-sorting-container .sort-container .dropdown-menu {
+  padding: 15px 0;
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 15px 2px #74c43f;
+}
+.filter-sorting-container .sort-container .dropdown-menu .dropdown-item {
+  border-radius: 5px;
+  cursor: pointer;
+}
+.filter-sorting-container .sort-container .dropdown-menu .dropdown-item:hover {
+  background-color: #74c43f;
+  color: white;
+}
+.card-list-block .card-group {
+  flex-wrap: wrap;
+}
+.card-list-block .card-group .card {
+  border: none;
+  border-radius: 15px;
+  min-width: calc(23%);
+  max-width: calc(23%);
+  margin: 14px;
+}
+.card-list-block .card-group .card .card-img-top {
+  border-radius: 15px;
+}
+.card-list-block .card-group .card .card-text {
+  font-size: 13px;
+  font-style: italic;
+  color: darkgray;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-list-block .card-group .card .card-size {
+  font-size: 15px;
+  color: darkgray;
+}
+.card-list-block .card-group .card span {
+  display: block;
+  margin-bottom: 10px;
+}
+.card-list-block .card-group .card .product-price {
+  font-size: 18px;
+}
+.card-list-block .card-group .card .oldPrice,
+.card-list-block .card-group .card .stockPrice {
+  display: inline-block;
+}
+.card-list-block .card-group .card .oldPrice {
+  font-size: 18px;
+}
+.card-list-block .card-group .card .stockPrice {
+  color: red;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.card-list-block .card-group .card .button-block {
+  text-align: center;
+}
+.card-list-block .card-group .card .button-block .btn-basket {
+  display: inline-block;
+  margin-top: 10px;
+  border: 1px solid #74c43f;
+  border-radius: 15px;
+  padding: 10px 20px 10px 20px;
+}
+.card-list-block .card-group .card .button-block .addToBasket {
+  background-color: white;
+}
+.card-list-block .card-group .card .button-block .addToBasket:hover,
+.card-list-block .card-group .card .button-block .deleteFromBasket {
+  background-color: #74c43f;
+  color: white;
+}
+.card-list-block .card-group .card:hover {
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px 0px #74c43f;
+}
+.card-list-block .card-group .card:hover .product-title {
+  color: #74c43f;
+}
+.filter-row {
+  border-bottom: 1px solid lightgray;
+}

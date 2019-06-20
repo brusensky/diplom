@@ -1,0 +1,125 @@
+{% extends "includes/base.html" %}
+
+{% block title %}
+     Оформление заказа
+{% endblock %}
+
+{% block style %}
+     <link rel="stylesheet" href="{{ static('styles/checkout.css') }}">
+{% endblock %}
+
+{% block content %}
+
+     <div class="checkout-page">
+          <h1 class = "text-center">Оформление заказа</h1>
+          <div class="cart-container mx-auto">
+               <table class = "table table-borderless ">
+                    <thead>
+                         <tr>
+                              <th scope="">Товар</th>
+                              <th scope="">Цена</th>
+                              <th scope="">Количествро</th>
+                              <th scope="">Всего</th>
+                         </tr>
+                    </thead>
+
+                    <tbody>
+                         {% for cart_item in cart.getCartList()  %}
+                              <tr>
+                                   <td>
+                                        <img src="{{cart_item.img_url}}" alt="i" class = "product-image">
+                                        {{cart_item.title}}
+                                   </td>
+                                   <td>{{cart_item.price}} грн.</td>
+                                   <td>{{cart_item.quantity}} шт.</td>
+                                   <td>{{cart_item.total_price}} грн.</td>
+                              </tr>
+                         {% endfor  %}
+
+                    </tbody>
+               </table>
+          </div>
+
+          <div class="form-order-container mx-auto">
+               <form class="form-checkout" action="" method="post">
+                    {{csrf_input}}
+                    <div class="type-of-delivery">
+                         <div class="btn-type-delivery btn-active" id = "pickup" data-url = "{{url('obp:issue_pickup')}}">
+                              Самовызов
+                         </div>
+                         <div class="btn-type-delivery " id = "delivery_courier" data-url = "{{url('obp:issue_delivery')}}">
+                              Доставка курьером
+                         </div>
+                    </div>
+                    <div class="client-form-container form-row">
+                         <div class="form-field field-name">
+                              <label for="{{ form_client.name.id_for_label }}">Имя:</label>
+                              {{form_client.name}}
+                         </div>
+                         <div class="form-field field-phone">
+                              <label for="{{ form_client.phone_number.id_for_label }}">Телефон:</label>
+                              {{form_client.phone_number}}
+                         </div>
+                         <div class="form-field field-mail">
+                              <label for="{{ form_client.name.id_for_label }}">Электронная почта:</label>
+                              {{form_client.email}}
+                         </div>
+                    </div>
+                    <div class="delivery-form-container form-row d-none">
+                         <div class="form-field field-city">
+                              <label for="{{ form_client.name.id_for_label }}">Город:</label>
+                              {{form_order.city}}
+                         </div>
+                         <div class="form-field field-street">
+                              <label for="{{ form_client.name.id_for_label }}">Улица:</label>
+                              {{form_order.street}}
+                         </div>
+                         <div class="form-field field-house">
+                              <label for="{{ form_client.name.id_for_label }}">Дом:</label>
+                              {{form_order.house}}
+                         </div>
+                         <div class="form-field field-entrance">
+                              <label for="{{ form_client.name.id_for_label }}">Этаж:</label>
+                              {{form_order.entrance}}
+                         </div>
+                         <div class="form-field field-apartament">
+                              <label for="{{ form_client.name.id_for_label }}">Квартира:</label>
+                              {{form_order.apartament_number}}
+                         </div>
+                    </div>
+               </form>
+          </div>
+
+          <div class="total-container mx-auto">
+               <table class = "table table-borderless">
+                    <tr>
+                         <td>Сумма:</td>
+                         <td>{{cart.get_total_price()}} грн.</td>
+                    </tr>
+                    <tr>
+                         <td>Доставка:</td>
+                         <td id = "delivery-cost-field"></td>
+                    </tr>
+                    <tr>
+                         <td>К оплате</td>
+                         <td id = "total-price-field"></td>
+                    </tr>
+               </table>
+               <input type="submit" name="" value="Оформить заказ" id = "submit_checkout" data-url="{{url('obp:main_page')}}">
+          </div>
+     </div>
+
+{% endblock%}
+
+
+{% block script %}
+     <script type="text/javascript" src="{{static('scripts/jquery.maskedinput.js')}}"></script>
+     <script type="text/javascript" src="{{static('scripts/validations.js')}}"></script>
+     <script type="text/javascript" src = "{{ static('scripts/checkout.js') }}">
+
+     </script>
+<script type="text/javascript">
+     $("[name='phone_number']").mask("+38(099) 999-9999");
+</script>
+
+{% endblock %}

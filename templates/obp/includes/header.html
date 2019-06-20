@@ -1,0 +1,125 @@
+<header class = "fixed-top p-0">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+          <a class="navbar-brand" href="{{url('obp:main_page')}}" class = "aWithoutEffects">
+               <img src="{{static('images/logo_header.png')}}" alt="Главная">
+               Pizza-Dnepr
+          </a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+              <div class="dropdown contacts">
+                   <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Контакты
+                   </button>
+                   <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuButton">
+                        <ul>
+                             <li>Служба доставки:</li>
+                             <li class = "tel-item">
+                                  <img src="{{static('images/lifecell_logo.png')}}" alt="">
+                                  <span>(093) 042-17-01</span>
+                             </li>
+                             <li class = "tel-item">
+                                  <img src="{{static('images/vodafone_logo.png')}}" alt="">
+                                  <span>(099) 042-17-01</span>
+                             </li>
+                             <li class = "tel-item">
+                                  <img src="{{static('images/kiev_logo.png')}}" alt="">
+                                  <span>(096) 042-17-01</span>
+                             </li>
+                             <li>Тех. поддержка:</li>
+                             <li class = "tel-item">
+                                  <img src="{{static('images/lifecell_logo.png')}}" alt="">
+                                  <span>(093) 043-17-01</span>
+                             </li>
+                        </ul>
+                   </div>
+              </div>
+              <li class = "nav-item">
+                   <a href="{{url('obp:stocks')}}"><button type="button" class="btn btn-danger">Скидки</button></a>
+              </li>
+
+
+         </ul>
+
+
+
+         <form class="nav-item form-inline search-container" id = "search_form" action = "{{url('obp:search')}}" method = "get">
+              <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search" name = "search" id = "search-field">
+              <img src="{{static('images/search_icon.svg')}}" alt="" onclick = "search_form.submit()">
+        </form>
+
+        <div class="auth-btn">
+             {% if auth.is_authorization() %}
+                    <div class="dropdown dropdown-account" id = "auth-btn-logout">
+                         <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Аккаунт
+                         </button>
+                         <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="dropdownMenuButton">
+                              <ul class = "m-0">
+                                   <li><a href="{{url('obp:personal_account')}}" class = "aWithoutEffects">Личный кабинет</a></li>
+                                   <li id = "btn-logout">Выход</li>
+                              </ul>
+                         </div>
+                    </div>
+                    <a href="{{url('obp:auth')}}" class = "aWithoutEffects d-none" id = "auth-btn-login">Вход</a>
+
+          {% else %}
+               <div class="dropdown dropdown-account d-none" id = "auth-btn-logout">
+                    <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Аккаунт
+                   </button>
+                   <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="dropdownMenuButton">
+                        <ul class = "m-0">
+                              <li><a href="{{url('obp:personal_account')}}" class = "aWithoutEffects">Личный кабинет</a></li>
+                              <li id = "btn-logout">Выход</li>
+                        </ul>
+                   </div>
+               </div>
+               <a href="{{url('obp:auth')}}" class = "aWithoutEffects" id = "auth-btn-login">Вход</a>
+          {% endif %}
+     </div>
+     <div class="btn-open-basket" id = "btn-open-basket" >
+          <img src="{{static('images/basket.svg')}}" alt="" id = "image-btn-basket">
+          <span class = "item-count-label" id = "count_ellements_in_basket">0</span>
+     </div>
+</div>
+</nav>
+
+
+
+
+<div class="basket-block">
+   <div class="d-flex flex-column h-100 w-100 p-0">
+
+        <div class="basket-title m-0">
+             <span>
+                  Корзина
+             </span>
+        </div>
+
+        <div class="d-flex flex-column basket-group overflow-auto p-0">
+
+        </div>
+
+        <div class="container-fluid basket-footer">
+             <div class="row total-price m-3">
+                  <div class="col total-block">
+                       Сумма:
+                  </div>
+
+                  <div class="col price-block text-right" id = "total-price">
+
+                  </div>
+             </div>
+             <div class="m-3">
+                  <a href = "{{ url('obp:checkout')}}" class = "aWithoutEffects checkoutBtn w-100">
+                       Оформить заказ
+                  </a>
+             </div>
+        </div>
+   </div>
+</div>
+</header>
